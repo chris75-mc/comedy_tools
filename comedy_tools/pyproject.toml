@@ -1,0 +1,25 @@
+[tool.poetry]
+name = "comedy-tools"
+version = "0.1.0"
+description = ""
+authors = ["Your Name <you@example.com>"]
+readme = "README.md"
+packages = [{include = "comedy_tools"}]
+
+[tool.poetry.dependencies]
+python = ">=3.9,<3.10"
+pyaudioanalysis = "^0.3.14"
+audinterface = "0.7"
+opensmile = "^2.4.2"
+pyloudnorm = "^0.1.1"
+humanfriendly = "^10.0"
+catboost = "^1.2"
+ffmpeg = "^1.4"
+flask = "^2.3.2"
+gunicorn = "^20.1.0"
+requests = "^2.31.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
