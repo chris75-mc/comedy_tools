@@ -3,6 +3,7 @@ from os import path
 import pandas as pd
 import numpy as np
 from abc import ABC
+import logging
 from .audio_processing import load_audio, compute_data_points, get_feature_engineering
 from .artifacts.Enums import ConfigEnums
 from .helpers.utils import load_model
@@ -11,14 +12,14 @@ from .helpers.utils import load_model
 class Predictor(ABC):
     """Predictor"""
 
-    def __init__(self, filename: str = "", audio_proprieties: list = []):
+    def __init__(self, file=None, audio_proprieties: list = []):
         """Init function"""
         self.sampling_win = ConfigEnums.SEGMENTATION_PARAMS.value.get("sampling_window", 0.5)
         self.segmented_signal, self.input_x = pd.DataFrame(), pd.DataFrame()
-        if filename != "":
-            self.sampling_freq, self.signal = load_audio(filename)
+        if file:
+            self.sampling_freq, self.signal = load_audio(file)
         elif len(audio_proprieties) > 0:
-            self.sampling_freq, self.signal = audio_proprieties[0], np.array(audio_proprieties[1])
+            self.sampling_freq, self.signal = audio_proprieties["sampling_freq"], np.array(audio_proprieties["signals"])
         dir_path, _ = path.split(__file__)
         model_path = path.join(dir_path, "artifacts", "models", "catboost_2.cbm")
         self.model = load_model(model_path, type="catboost")

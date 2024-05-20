@@ -2,3 +2,5 @@ __pycache__
 .mypy_cache
 .vscode
 .DS_Store
+discrod_bot/credentials.json
+discord_bot/configuration.py

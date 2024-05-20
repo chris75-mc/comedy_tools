@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "discord-bot"
+version = "0.1.0"
+description = "Bot discord that provide comedy tools"
+authors = ["chris"]
+readme = "README.md"
+packages = [{include = "discord_bot"}]
+
+[tool.poetry.dependencies]
+python = ">=3.9,<3.10"
+requests = "^2.31.0"
+discord-py = "^2.3.1"
+pyaudioanalysis = "^0.3.14"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

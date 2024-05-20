@@ -6,7 +6,7 @@ from pyAudioAnalysis import audioBasicIO as aIO
 import pyloudnorm as pyln
 
 
-def load_audio(filename):
+def load_audio(file):
     """Load audio from file path
 
     Parameters
@@ -18,7 +18,10 @@ def load_audio(filename):
         sampling_freq (int): sampling frequence.
         signales (list[int]): time series giving the amplitude of each point.
     """
-    sampling_freq, signals = aIO.read_audio_file(filename + ".wav")
+    if isinstance(file, str):
+        file = file + ".wav"
+
+    sampling_freq, signals = aIO.read_audio_file(file)
     return sampling_freq, signals
 
 
